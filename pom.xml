@@ -51,7 +51,8 @@
 
     <properties>
         <java.version>11</java.version>
-        
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -182,7 +183,8 @@
                     <archive>
                         <manifest>
                             <!-- full package name of class with the main you want to run -->
-                            <mainClass>edu.ucsb.cs56.pconrad.menuitem.MenuItem</mainClass>
+			    <mainClass>hello.Application</mainClass>
+
                         </manifest>
                     </archive>
                 </configuration>
