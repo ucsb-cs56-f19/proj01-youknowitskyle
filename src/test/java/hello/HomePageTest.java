@@ -22,57 +22,50 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 @WebMvcTest(WebController.class)
 public class HomePageTest {
 
-	@Autowired
-	private MockMvc mvc;
+    @Autowired
+    private MockMvc mvc;
 
-	@MockBean
-	private AuthControllerAdvice aca;
+    @MockBean
+    private AuthControllerAdvice aca;
 
-	@MockBean
-	private ClientRegistrationRepository crr;
+    @MockBean
+    private ClientRegistrationRepository crr;
 
-	@Test
-	public void getHomePage_ContentType() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-				.andExpect(content().contentType("text/html;charset=UTF-8"));
-	}
+    @Test
+    public void getHomePage_ContentType() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+                .andExpect(content().contentType("text/html;charset=UTF-8"));
+    }
 
-	@Test
-	public void getHomePage_BootstrapLoaded() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-				.andExpect(xpath(BootstrapLiterals.bootstrapCSSXpath).exists());
-		for (String s : BootstrapLiterals.bootstrapJSurls) {
-			String jsXPath = String.format("//script[@src='%s']", s);
-			mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-					.andExpect(xpath(jsXPath).exists());
-		}
-	}
+    @Test
+    public void getHomePage_BootstrapLoaded() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+                .andExpect(xpath(BootstrapLiterals.bootstrapCSSXpath).exists());
+        for (String s : BootstrapLiterals.bootstrapJSurls) {
+            String jsXPath = String.format("//script[@src='%s']", s);
+            mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+                    .andExpect(xpath(jsXPath).exists());
+        }
+    }
 
-	@Test
-	public void getHomePage_hasCorrectTitle() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-				.andExpect(xpath("//title").exists())
-				.andExpect(xpath("//title").string("CS56 Spring Boot Practice App"));
-	}
+    @Test
+    public void getHomePage_hasCorrectTitle() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+                .andExpect(xpath("//title").exists())
+                .andExpect(xpath("//title").string("CS56 Spring Boot Practice App"));
+    }
 
-	@Test
-	public void getHomePage_hasCorrectBrand() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-				.andExpect(xpath("/html/body/div/nav/a").exists())
-				.andExpect(xpath("/html/body/div/nav/a").string("lab07"));
-	}
+    @Test
+    public void getHomePage_hasCorrectBrand() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+                .andExpect(xpath("/html/body/div/nav/a").exists())
+                .andExpect(xpath("/html/body/div/nav/a").string("lab07"));
+    }
 
-	@Test
-	public void getHomePage_hasCorrectEarthquakesNavItem() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-				.andExpect(xpath("//*[@id=\"navbarTogglerDemo03\"]/ul[1]/li[2]/a").exists())
-				.andExpect(xpath("//*[@id=\"navbarTogglerDemo03\"]/ul[1]/li[2]/a").string("Earthquake Search"));
-	}
-
-	@Test
-	public void getHomePage_hasCorrectUsersNavItem() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
-				.andExpect(xpath("//*[@id=\"navbarTogglerDemo03\"]/ul[1]/li[3]/a").exists())
-				.andExpect(xpath("//*[@id=\"navbarTogglerDemo03\"]/ul[1]/li[3]/a").string("Users"));
-	}
+    @Test
+    public void getHomePage_hasCorrectFirstPage() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+                .andExpect(xpath("//*[@id=\"navbarTogglerDemo03\"]/ul[1]/li[2]/a").exists())
+                .andExpect(xpath("//*[@id=\"navbarTogglerDemo03\"]/ul[1]/li[2]/a").string("Earthquake Search"));
+    }
 }
