@@ -2,6 +2,8 @@ javadoc url: <https://ucsb-cs56-f19.github.io/lab07-youknowitskyle/>
 
 heroku url: <https://cs56-f19-lab07-youknowitskyle.herokuapp.com/>
 
+travis-ci: <https://travis-ci.org/ucsb-cs56-f19/lab07-youknowitskyle/>
+
 A simple Spring Boot webapp using:
 
 -   Thymeleaf templating
