@@ -48,6 +48,7 @@ public class AuthControllerAdvice {
 		if (token == null)
 			return "";
 		return token2login(token);
+
 	}
 
 	@ModelAttribute("isMember")
