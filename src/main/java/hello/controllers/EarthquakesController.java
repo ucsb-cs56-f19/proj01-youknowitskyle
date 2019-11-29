@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import hello.EqSearch;
-import hello.EarthquakeQueryService;
+import hello.services.EarthquakeQueryService;
 
 import hello.geojson.FeatureCollection;
 
