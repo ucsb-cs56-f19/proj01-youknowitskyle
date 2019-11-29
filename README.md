@@ -1,8 +1,12 @@
-javadoc url: <https://ucsb-cs56-f19.github.io/lab07-youknowitskyle/>
+repository: <https://github.com/ucsb-cs56-f19/proj01-youknowitskyle/edit/master/README.md>
 
-heroku url: <https://cs56-f19-lab07-youknowitskyle.herokuapp.com/>
+javadoc: <https://ucsb-cs56-f19.github.io/proj01-youknowitskyle/>
 
-travis-ci: <https://travis-ci.org/ucsb-cs56-f19/lab07-youknowitskyle/>
+heroku: <https://cs56-f19-proj01-youknowitskyle.herokuapp.com/>
+
+travis-CI: <https://travis-ci.org/ucsb-cs56-f19/proj01-youknowitskyle/>
+
+
 
 A simple Spring Boot webapp using:
 
