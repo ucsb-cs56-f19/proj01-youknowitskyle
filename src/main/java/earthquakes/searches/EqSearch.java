@@ -1,4 +1,4 @@
-package earthquakes;
+package earthquakes.searches;
 
 public class EqSearch {
 	private int distance;
