@@ -19,7 +19,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 public class LocationQueryService {
 
-	private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);
+	private Logger logger = LoggerFactory.getLogger(LocationQueryService.class);
 
 	public String getJSON(String location) {
 
