@@ -10,11 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 
 import earthquakes.searches.*;
 import earthquakes.services.EarthquakeQueryService;
 import earthquakes.services.LocationQueryService;
 import earthquakes.geojson.FeatureCollection;
+import earthquakes.osm.Place;
 
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
@@ -40,6 +42,9 @@ public class LocationsController {
 
 		String json = e.getJSON(locSearch.getLocation());
 		model.addAttribute("json", json);
+
+		List<Place> places = Place.listFromJson(json);
+		model.addAttribute("places", places);
 
 		return "locations/results";
 	}
