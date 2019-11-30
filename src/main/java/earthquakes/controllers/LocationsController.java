@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 import java.util.HashMap;
 
-import earthquakes.searches.EqSearch;
+import earthquakes.searches.*;
 import earthquakes.services.EarthquakeQueryService;
 
 import earthquakes.geojson.FeatureCollection;
@@ -19,31 +19,22 @@ import earthquakes.geojson.FeatureCollection;
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
 @Controller
-public class EarthquakesController {
+public class LocationsController {
 
 	@Autowired
 	private ClientRegistrationRepository clientRegistrationRepository;
 
-	@GetMapping("/earthquakes/search")
-	public String getEarthquakesSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
-			EqSearch eqSearch) {
-		return "earthquakes/search";
+	@GetMapping("/locations/search")
+	public String getLocationsSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
+			LocSearch locSearch) {
+		return "locations/search";
 	}
 
-	@GetMapping("/earthquakes/results")
-	public String getEarthquakesResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
-			EqSearch eqSearch) {
+	@GetMapping("/locations/results")
+	public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
+			LocSearch locSearch) {
+		model.addAttribute("locSearch", locSearch);
 
-		EarthquakeQueryService e = new EarthquakeQueryService();
-
-		model.addAttribute("eqSearch", eqSearch);
-		// TODO: Actually do the search here and add results to the model
-		String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());
-		model.addAttribute("json", json);
-		FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
-		model.addAttribute("featureCollection", featureCollection);
-
-		return "earthquakes/results";
+		return "locations/results";
 	}
-
 }
