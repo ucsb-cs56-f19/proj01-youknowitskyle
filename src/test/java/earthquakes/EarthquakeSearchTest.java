@@ -1,4 +1,4 @@
-package hello;
+package earthquakes;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,7 +23,7 @@ import org.junit.Before;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 
-import hello.controllers.*;
+import earthquakes.controllers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(EarthquakesController.class)
