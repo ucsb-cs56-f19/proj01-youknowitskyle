@@ -61,8 +61,8 @@ public class LocationsController {
 
 	@GetMapping("/locations")
 	public String index(Model model) {
-		Iterable<Location> users = locationRepository.findAll();
-		model.addAttribute("users", users);
+		Iterable<Location> locations = locationRepository.findAll();
+		model.addAttribute("locations", locations);
 		return "locations/index";
 	}
 
