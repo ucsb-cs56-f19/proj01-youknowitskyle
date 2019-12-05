@@ -1,4 +1,4 @@
-repository: <https://github.com/ucsb-cs56-f19/proj01-youknowitskyle/edit/master/README.md>
+repository: <https://github.com/ucsb-cs56-f19/proj01-youknowitskyle/>
 
 javadoc: <https://ucsb-cs56-f19.github.io/proj01-youknowitskyle/>
 
