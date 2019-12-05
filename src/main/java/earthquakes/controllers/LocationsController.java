@@ -15,13 +15,22 @@ import java.util.List;
 import earthquakes.searches.*;
 import earthquakes.services.EarthquakeQueryService;
 import earthquakes.services.LocationQueryService;
+import earthquakes.entities.Location;
 import earthquakes.geojson.FeatureCollection;
 import earthquakes.osm.Place;
+import earthquakes.repositories.LocationRepository;
 
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
 @Controller
 public class LocationsController {
+
+	private LocationRepository locationRepository;
+
+	@Autowired
+	public LocationsController(LocationRepository locationRepository) {
+		this.locationRepository = locationRepository;
+	}
 
 	@Autowired
 	private ClientRegistrationRepository clientRegistrationRepository;
@@ -47,6 +56,13 @@ public class LocationsController {
 		model.addAttribute("places", places);
 
 		return "locations/results";
+	}
+
+	@GetMapping("/locations")
+	public String index(Model model) {
+		Iterable<Location> users = locationRepository.findAll();
+		model.addAttribute("users", users);
+		return "locations/index";
 	}
 
 }
